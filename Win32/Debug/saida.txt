@@ -1,0 +1,34 @@
+select * from  produtos where id=29
+union all
+select * from  produtos where id=29
+union all
+select * from  produtos where id=29
+union all
+select * from  produtos where id=29
+union all
+select * from  produtos where id=30
+union all
+select * from  produtos where id=30
+union all
+select * from  produtos where id=30
+union all
+select * from  produtos where id=30
+union all
+select * from  produtos where id=30
+union all
+select * from  produtos where id=30
+union all
+select * from  produtos where id=30
+union all
+select * from  produtos where id=35
+union all
+select * from  produtos where id=35
+union all
+select * from  produtos where id=35
+union all
+select * from  produtos where id=35
+union all
+select * from  produtos where id=35
+union all
+select * from  produtos where id=35
+

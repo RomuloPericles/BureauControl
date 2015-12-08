@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2E3DCCD0-2AA8-44F4-A299-F35A9CB7A842}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BureauControl.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\NCRtest\NCRTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BureauControl">
+        <MSBuild Projects="BureauControl.dproj"/>
+    </Target>
+    <Target Name="BureauControl:Clean">
+        <MSBuild Projects="BureauControl.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BureauControl:Make">
+        <MSBuild Projects="BureauControl.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NCRTest">
+        <MSBuild Projects="..\NCRtest\NCRTest.dproj"/>
+    </Target>
+    <Target Name="NCRTest:Clean">
+        <MSBuild Projects="..\NCRtest\NCRTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NCRTest:Make">
+        <MSBuild Projects="..\NCRtest\NCRTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BureauControl;NCRTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BureauControl:Clean;NCRTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BureauControl:Make;NCRTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
