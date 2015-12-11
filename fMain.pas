@@ -15,22 +15,6 @@ interface
   const
     cSQLProd = 'select * from produtos';
 
-
-    // procedure openport(PrinterName: pchar); stdcall; // far;
-    // external 'GenericLIB.dll';
-    // procedure closeport; // far;
-    // external 'GenericLIB.dll';
-    // procedure sendcommand(Command: pchar); stdcall; far; external 'GenericLIB.dll';
-    // procedure setup(LabelWidth, LabelHeight, Speed, Density, Sensor, Vertical, Offset: pchar); stdcall; far; external 'GenericLIB.dll';
-    // procedure downloadpcx(Filename, ImageName: pchar); stdcall; far; external 'GenericLIB.dll';
-    // procedure barcode(X, Y, CodeType, Height, Readable, Rotation, Narrow, Wide, Code: pchar); stdcall; far; external 'GenericLIB.dll';
-    // procedure printerfont(X, Y, FontName, Rotation, Xmul, Ymul, Content: pchar); stdcall; far; external 'GenericLIB.dll';
-    // procedure clearbuffer; far; external 'GenericLIB.dll';
-    // procedure printlabel(NumberOfSet, NumberOfCopoy: pchar); stdcall; far; external 'GenericLIB.dll';
-    // procedure formfeed; far; external 'GenericLIB.dll';
-    // procedure nobackfeed; far; external 'GenericLIB.dll';
-    // procedure windowsfont(X, Y, FontHeight, Rotation, FontStyle, FontUnderline: integer; FaceName, TextContect: pchar); stdcall; far; external 'GenericLIB.dll';
-
   type
     TForm1 = class(TForm)
       DBNavigator1: TDBNavigator;
@@ -76,6 +60,7 @@ interface
       frxReport2: TfrxReport;
       frxReport3: TfrxReport;
       FDQuery2: TFDQuery;
+      OpenDialog1: TOpenDialog;
       procedure btn1Click(Sender: TObject);
       procedure FormShow(Sender: TObject);
       procedure Sair1Click(Sender: TObject);
@@ -104,6 +89,7 @@ implementation
 
   uses uCredits, uBureauTools, Registry, tools;
   {$R *.dfm}
+  // frxProd.OnAfterPrintReport(Sender: TObject);
 
   procedure TForm1.btn1Click(Sender: TObject);
 
@@ -175,16 +161,6 @@ implementation
                   with (xStrF) do
                     begin
                       Add('select * from  produtos where id=' + xSql.FieldByName('id').asString);
-                      // Text := ReplaceTag(Text, 'data', DateToStr(Now));
-                      // Text := ReplaceTag(Text, 'hora', TimeToStr(Now));
-                      // Text := ReplaceTag(Text, 'ref', xSql.FieldByName('ref').asString);
-                      // Text := ReplaceTag(Text, 'barras', xSql.FieldByName('barras').asString);
-                      // Text := ReplaceTag(Text, 'desc', xSql.FieldByName('desc').asString);
-                      // Text := ReplaceTag(Text, 'desc2', xSql.FieldByName('desc2').asString);
-                      // Text := ReplaceTag(Text, 'desc3', xSql.FieldByName('desc3').asString);
-                      // Text := ReplaceTag(Text, 'preco', xSql.FieldByName('preco').asString);
-                      // Text := ReplaceTag(Text, 'cor', xSql.FieldByName('cor').asString);
-                      // Text := ReplaceTag(Text, 'tam', xSql.FieldByName('tam').asString);
 
                       Dec(xTotQtdImp);
                       if (xTotQtdImp = 0) then
@@ -195,29 +171,42 @@ implementation
                       if (xQtdImp = 0) then
                         begin
                           xSql.Next;
-                          //Add('union all');
+                          // Add('union all');
                           xQtdImp := xSql.FieldByName('qtdimp').AsInteger;
                         end;
                     end;
-                end;  end;
-              try
-                AssignFile(F, gConfig.Saida);
+                end;
+            end;
+          try
+            AssignFile(F, gConfig.Saida);
 
-                Rewrite(F);
-                Writeln(F, xStrF.Text);
+            Rewrite(F);
+            Writeln(F, xStrF.Text);
 
-              finally
-                CloseFile(F);
-              end;
+          finally
+            CloseFile(F);
+          end;
 
-          //  end;
+          // end;
           xSql.Close;
 
           FDQuery2.Active := False;
           FDQuery2.SQL.Text := xStrF.Text;
           FDQuery2.Active := True;
-                frxProd.
-          frxProd.ShowReport(True);
+          // OpenDialog1.Execute;
+          // frxProd.LoadFromFile(OpenDialog1.FileName);
+          frxProd.LoadFromFile(gConfig.Layouts[cbbLayout.ItemIndex].Nome);
+
+          frxProd.SetProgressMessage('Teste');
+
+          frxProd.PrepareReport(True);
+          frxProd.ShowPreparedReport;
+          if Assigned(frxProd.PreviewForm) then
+            MsgInforma('SIM')
+          else
+            MsgInforma('NAO');
+          // frxProd.OnAfterPrintReport();
+
           try
             xSql.SQL.Text := 'update produtos p set p.qtdimp = 0 where p.qtdimp > 0';
             xSql.SQL.Add('and layout = ' + #39 + cbbLayout.Text + #39); // #39 = '

@@ -107,10 +107,9 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\tools\tools.pas"/>
-        <DCCReference Include="..\tools\uCredits.pas">
+        <DCCReference Include="W:\tools\tools.pas"/>
+        <DCCReference Include="W:\tools\uCredits.pas">
             <Form>fCredits</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uBureauTools.pas"/>
         <None Include="ModelSupport_BureauControl\default.txaPackage"/>

@@ -20,7 +20,7 @@ object Form1: TForm1
   TextHeight = 13
   object btnPrint: TSpeedButton
     Left = 80
-    Top = 86
+    Top = 81
     Width = 112
     Height = 44
     Caption = 'Im&primir'
@@ -475,6 +475,7 @@ object Form1: TForm1
     Top = 16
   end
   object FDQuery1: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from produtos')
@@ -528,14 +529,107 @@ object Form1: TForm1
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42344.906745069400000000
-    ReportOptions.LastChange = 42345.137442326400000000
+    ReportOptions.LastChange = 42348.917172037040000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
     Left = 660
-    Top = 183
+    Top = 182
+    Datasets = <
+      item
+        DataSet = frxDBDataset1
+        DataSetName = 'EtqPromo'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 101.000000000000000000
+      PaperHeight = 22.000000000000000000
+      PaperSize = 256
+      LeftMargin = 3.000000000000000000
+      RightMargin = 3.000000000000000000
+      Columns = 2
+      ColumnWidth = 47.500000000000000000
+      ColumnPositions.Strings = (
+        '0'
+        '47,50')
+      BackPictureVisible = False
+      BackPicturePrintable = False
+      PrintOnPreviousPage = True
+      object MasterData1: TfrxMasterData
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Height = 83.149606300000000000
+        ParentFont = False
+        Top = 18.897650000000000000
+        Width = 179.527675000000000000
+        DataSet = frxDBDataset1
+        DataSetName = 'EtqPromo'
+        RowCount = 0
+        object Line1: TfrxLineView
+          Left = 181.417440000000000000
+          Top = 15.118120000000000000
+          Height = 22.677180000000000000
+          ShowHint = False
+          Frame.Typ = [ftLeft]
+        end
+        object EtqPromodesc: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 3.779530000000000000
+          Width = 181.417440000000000000
+          Height = 34.015770000000000000
+          ShowHint = False
+          DataField = 'desc'
+          DataSet = frxDBDataset1
+          DataSetName = 'EtqPromo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[EtqPromo."desc"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+    end
+  end
+  object frxDBDataset1: TfrxDBDataset
+    UserName = 'EtqPromo'
+    CloseDataSource = False
+    DataSet = FDQuery2
+    BCDToCurrency = False
+    Left = 672
+    Top = 128
+  end
+  object frxReport2: TfrxReport
+    Version = '4.13.2'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42344.906745069400000000
+    ReportOptions.LastChange = 42345.137442326400000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 707
+    Top = 179
     Datasets = <
       item
         DataSet = frxDBDataset1
@@ -603,10 +697,17 @@ object Form1: TForm1
             '[EtqPromo."desc"]')
           ParentFont = False
         end
+        object Line1: TfrxLineView
+          Left = 124.724490000000000000
+          Top = 11.338590000000000000
+          Height = 22.677180000000000000
+          ShowHint = False
+          Frame.Typ = [ftLeft]
+        end
         object EtqPromoref: TfrxMemoView
           Align = baCenter
           Left = -883.086574265000000000
-          Top = 2.000000000000000000
+          Top = 1.000000000000000000
           Width = 1889.763779530000000000
           Height = 18.897650000000000000
           ShowHint = False
@@ -659,145 +760,6 @@ object Form1: TForm1
             'Por: [EtqPromo."desc3"]')
           ParentFont = False
         end
-        object Line2: TfrxLineView
-          Left = -1.000000000000000000
-          Top = 3.779530000000000000
-          Height = 22.677180000000000000
-          ShowHint = False
-          Frame.Typ = [ftLeft]
-        end
-        object Line1: TfrxLineView
-          Left = 123.724490000000000000
-          Height = 22.677180000000000000
-          ShowHint = False
-          Frame.Typ = [ftLeft]
-        end
-      end
-    end
-  end
-  object frxDBDataset1: TfrxDBDataset
-    UserName = 'EtqPromo'
-    CloseDataSource = False
-    DataSet = FDQuery2
-    BCDToCurrency = False
-    Left = 672
-    Top = 128
-  end
-  object frxReport2: TfrxReport
-    Version = '4.13.2'
-    DotMatrixReport = False
-    IniFile = '\Software\Fast Reports'
-    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
-    PreviewOptions.Zoom = 1.000000000000000000
-    PrintOptions.Printer = 'Default'
-    PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 42344.906745069400000000
-    ReportOptions.LastChange = 42345.136797627300000000
-    ScriptLanguage = 'PascalScript'
-    ScriptText.Strings = (
-      'begin'
-      ''
-      'end.')
-    Left = 707
-    Top = 180
-    Datasets = <
-      item
-        DataSet = frxDBDataset1
-        DataSetName = 'EtqPromo'
-      end>
-    Variables = <>
-    Style = <>
-    object Data: TfrxDataPage
-      Height = 1000.000000000000000000
-      Width = 1000.000000000000000000
-    end
-    object Page1: TfrxReportPage
-      PaperWidth = 104.000000000000000000
-      PaperHeight = 15.000000000000000000
-      PaperSize = 256
-      LeftMargin = 3.000000000000000000
-      RightMargin = 3.000000000000000000
-      Columns = 1
-      ColumnWidth = 95.000000000000000000
-      ColumnPositions.Strings = (
-        '0')
-      BackPictureVisible = False
-      BackPicturePrintable = False
-      PrintOnPreviousPage = True
-      object MasterData1: TfrxMasterData
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = []
-        Height = 56.692950000000000000
-        ParentFont = False
-        Top = 18.897650000000000000
-        Width = 370.393940000000000000
-        DataSet = frxDBDataset1
-        DataSetName = 'EtqPromo'
-        RowCount = 0
-        object EtqPromodesc: TfrxMemoView
-          Top = 18.677180000000000000
-          Width = 181.417440000000000000
-          Height = 15.118120000000000000
-          ShowHint = False
-          DataField = 'desc'
-          DataSet = frxDBDataset1
-          DataSetName = 'EtqPromo'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[EtqPromo."desc"]')
-          ParentFont = False
-        end
-        object Line1: TfrxLineView
-          Left = 181.417440000000000000
-          Top = 15.118120000000000000
-          Height = 22.677180000000000000
-          ShowHint = False
-          Frame.Typ = [ftLeft]
-        end
-        object EtqPromoref: TfrxMemoView
-          Left = -855.118052260000000000
-          Width = 1889.763779530000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataField = 'ref'
-          DataSet = frxDBDataset1
-          DataSetName = 'EtqPromo'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[EtqPromo."ref"]')
-          ParentFont = False
-        end
-        object EtqPromopreco: TfrxMemoView
-          Top = 35.795300000000000000
-          Width = 179.527675000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          DataField = 'preco'
-          DataSet = frxDBDataset1
-          DataSetName = 'EtqPromo'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[EtqPromo."preco"]')
-          ParentFont = False
-        end
       end
     end
   end
@@ -810,14 +772,14 @@ object Form1: TForm1
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42344.906745069400000000
-    ReportOptions.LastChange = 42345.136797627300000000
+    ReportOptions.LastChange = 42348.848258333330000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
     Left = 756
-    Top = 179
+    Top = 178
     Datasets = <
       item
         DataSet = frxDBDataset1
@@ -857,9 +819,10 @@ object Form1: TForm1
         DataSetName = 'EtqPromo'
         RowCount = 0
         object EtqPromoref: TfrxMemoView
+          Left = -1.000000000000000000
           Top = 11.338590000000000000
           Width = 188.976377950000000000
-          Height = 18.897650000000000000
+          Height = 26.456710000000000000
           ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'EtqPromo'
@@ -892,8 +855,13 @@ object Form1: TForm1
       'union all'
       'select * from produtos where id=36'
       'union all'
-      'select * from produtos where id=36')
+      'select * from produtos')
     Left = 726
     Top = 119
+  end
+  object OpenDialog1: TOpenDialog
+    DefaultExt = 'fr3'
+    Left = 663
+    Top = 237
   end
 end
